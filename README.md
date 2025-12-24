@@ -79,10 +79,10 @@ Move hand up / down → rotate tree vertically
 This is mapped from the palm center landmark (index 9).
 
 # ✊ Gesture Controls (Modes)
-Gesture | Description | Effect
-✊ Fist | Fingers close to wrist | 🎄 Tree Mode – particles form a Christmas tree
-✋ Open | Hand	Fingers spread wide	| 💥 Scatter Mode – particles float & rotate freely
-🤏 Pinch | 	Thumb + index close	| 🔍 Focus Mode – a memory photo zooms forward
+
+- ✊ Fist: Fingers close to wrist -> 🎄 Tree Mode: particles form a Christmas tree
+- ✋ Open Hand: Fingers spread wide -> 💥 Scatter Mode – particles float & rotate freely
+- 🤏 Pinch: Thumb + index close	-> 🔍 Focus Mode – a memory photo zooms forward
 
 # 🖼 Uploading Photos
 
@@ -104,11 +104,14 @@ Press H → Hide / show UI overlay
 
 Because this project uses ES Modules, it must be served via HTTP.
 
-``
+```
     Option 1: VS Code Live Server
     Right click → Open with Live Server
 ```
-
+```
+    Option 2: Python SimpleHTTPServer
+    python -m http.server
+```
 Then open: http://localhost:8000
 
 

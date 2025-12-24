@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>聖誕樹喵喵～</title>
+<title>Christmas 2025🎄</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- Google Fonts -->
@@ -147,17 +147,13 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 
 import { FilesetResolver, HandLandmarker } from '@mediapipe/tasks-vision';
 
-/* =======================
-   GLOBAL STATE
-======================= */
+/* ======================= GLOBAL STATE ======================= */
 const STATE = {
     mode: 'TREE',
     gesture: {}
 };
 
-/* =======================
-   BASIC SETUP
-======================= */
+/* ======================= BASIC SETUP ======================= */
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -301,9 +297,7 @@ for (let i=0;i<2500;i++) {
     particles.push(new Particle(m));
 }
 
-/* =======================
-   CANDY CANE
-======================= */
+/* ======================= CANDY CANE ======================= */
 function createCandyCane() {
     const pts = [];
     for (let i=0;i<20;i++) {
@@ -337,9 +331,7 @@ function createCandyCane() {
 }
 createCandyCane();
 
-/* =======================
-   PHOTO WALL
-======================= */
+/* ======================= PHOTO WALL ======================= */
 function defaultPhoto() {
     const c = document.createElement('canvas');
     c.width = c.height = 256;
@@ -368,7 +360,7 @@ function addPhotoToScene(tex) {
     mainGroup.add(frame);
     particles.push(new Particle(frame,'PHOTO'));
 }
-// addPhotoToScene(defaultPhoto()); QQQQ
+// addPhotoToScene(defaultPhoto()); cancelled to start empty
 
 /* Upload logic (exact spec) */
 document.querySelector('input').addEventListener('change', e=>{
@@ -383,9 +375,7 @@ document.querySelector('input').addEventListener('change', e=>{
     reader.readAsDataURL(f);
 });
 
-/* =======================
-   MEDIAPIPE
-======================= */
+/* ======================= MEDIAPIPE ======================= */
 const video = document.querySelector('#cv video');
 const canvasCV = document.querySelector('#cv canvas');
 const ctxCV = canvasCV.getContext('2d');
@@ -420,11 +410,11 @@ async function initCV(){
     const handX = lm[9].x; // 0~1
     const handY = lm[9].y;
 
-    // 修正左右反向：X 轴取反
+    // 修正左右反向：X 軸取反
     const targetRotY = -(handX - 0.5) * 1.8;
     const targetRotX =  (handY - 0.5) * 1.2;
 
-    // 使用 lerp 让旋转更丝滑
+    // 使用 lerp 讓旋轉更絲滑
     mainGroup.rotation.y = THREE.MathUtils.lerp(
     mainGroup.rotation.y,
     targetRotY,
@@ -443,21 +433,19 @@ async function initCV(){
 }
 initCV();
 
-/* =======================
-   ANIMATION LOOP
-======================= */
+/* ======================= ANIMATION LOOP ======================= */
 function animate(){
     if (treeStar) {
     const t = performance.now() * 0.002;
 
-    // 微微旋转
+    // 微微旋轉
     treeStar.rotation.y += 0.01;
 
-    // 呼吸式金属闪光
+    // 呼吸式金属閃光
     treeStar.material.emissiveIntensity =
         0.35 + Math.sin(t * 2.0) * 0.25;
 
-    // 金属 roughness 微变化（非常高级）
+    // 金属 roughness 微變化（非常高級）
     treeStar.material.roughness =
         0.12 + Math.sin(t * 1.5) * 0.05;
     }
